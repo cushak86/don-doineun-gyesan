@@ -23,6 +23,7 @@ import SavingsCalc from "@/components/calculators/SavingsCalc";
 import SchdDividendCalc from "@/components/calculators/SchdDividendCalc";
 import WithdrawalCalc from "@/components/calculators/WithdrawalCalc";
 import { CALCULATORS } from "@/lib/clusters";
+import { site } from "@/site.config";
 
 const COMPONENTS: Record<string, React.ComponentType> = {
   compound: CompoundCalc,
@@ -62,16 +63,36 @@ export async function generateMetadata({
   if (!calc) return {};
   return {
     title: `${calc.title} — ${calc.short}`,
-    description: `${calc.description} 회원가입 없이 무료로 사용하세요.`,
+    description: `${calc.description} 회원가입 없이 무료이며, 입력한 값은 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.`,
+    alternates: { canonical: `/calculators/${slug}` },
+    openGraph: { url: `/calculators/${slug}` },
   };
 }
 
 export default async function CalcPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const Calc = COMPONENTS[slug];
-  if (!Calc || !CALCULATORS.some((c) => c.slug === slug)) notFound();
+  const calc = CALCULATORS.find((c) => c.slug === slug);
+  if (!Calc || !calc) notFound();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: calc.title,
+    url: `${site.url}/calculators/${slug}`,
+    description: calc.description,
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "All",
+    inLanguage: "ko",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+    publisher: { "@id": `${site.url}/#organization` },
+  };
   return (
     <CalcPageLayout slug={slug}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Calc />
     </CalcPageLayout>
   );

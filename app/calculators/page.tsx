@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "투자 계산기 모음 — 복리·FIRE·배당·대출·연봉 등 21종",
   description:
     "복리, 목표금액, FIRE, 배당, MDD, 리밸런싱, 연봉 실수령, 대출, 적금 등 21종의 계산기를 무료로 사용해보세요. 회원가입 없이 바로 계산할 수 있습니다.",
+  alternates: { canonical: "/calculators" },
 };
 
 export default function CalculatorsPage() {

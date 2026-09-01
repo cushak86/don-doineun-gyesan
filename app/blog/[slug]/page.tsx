@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
 import Comments from "@/components/Comments";
+import PostCard from "@/components/PostCard";
 import { CALCULATORS, CLUSTERS } from "@/lib/clusters";
 import { getAllPosts, getPost } from "@/lib/posts";
 import { site } from "@/site.config";
@@ -22,10 +23,12 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
+      url: `/blog/${slug}`,
       publishedTime: post.date,
     },
   };
@@ -37,14 +40,20 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const calc = CALCULATORS.find((c) => c.slug === post.calculator);
+  const related = getAllPosts()
+    .filter((p) => p.cluster === post.cluster && p.slug !== post.slug)
+    .slice(0, 3);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name },
+    dateModified: post.date,
+    image: `${site.url}/og.png`,
+    articleSection: CLUSTERS[post.cluster].label,
+    author: { "@type": "Organization", name: site.name, url: `${site.url}/about` },
+    publisher: { "@id": `${site.url}/#organization` },
     mainEntityOfPage: `${site.url}/blog/${post.slug}`,
     inLanguage: "ko",
   };
@@ -82,6 +91,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </div>
 
       <Comments />
+
+      {related.length > 0 && (
+        <div style={{ maxWidth: 760, margin: "48px auto 0" }}>
+          <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 16 }}>
+            {CLUSTERS[post.cluster].emoji} 같은 주제의 다른 글
+          </h2>
+          <div className="grid" style={{ gap: 12 }}>
+            {related.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
+        </div>
+      )}
 
       <div style={{ maxWidth: 760, margin: "40px auto 0" }}>
         <Link href="/blog" className="more" style={{ color: "var(--accent)", fontWeight: 600 }}>

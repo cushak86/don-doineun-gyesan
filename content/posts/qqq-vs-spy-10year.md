@@ -61,3 +61,11 @@ QQQ는 나스닥에 상장된 비금융 기업 중 시가총액 상위 100개를
 3. 어느 쪽이든 10년 이상 적립을 유지하는 것이 종목 선택보다 훨씬 중요합니다.
 
 내 월 적립금과 기간으로 직접 시뮬레이션해보면 감이 훨씬 명확해집니다. 아래 복리 계산기에 숫자를 넣어보세요.
+
+---
+
+**참고 자료**
+
+- [Invesco QQQ 공식 페이지](https://www.invesco.com/qqq-etf/en/home.html) — 구성 종목·수익률·총보수
+- [State Street SPY 공식 페이지](https://www.ssga.com/us/en/intermediary/etfs/spdr-sp-500-etf-trust-spy) — 팩트시트·수익률
+- [Nasdaq-100 지수 안내](https://www.nasdaq.com/solutions/global-indexes/nasdaq-100) — 지수 편입 기준

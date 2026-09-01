@@ -3,7 +3,8 @@ import { site } from "@/site.config";
 
 export const metadata: Metadata = {
   title: "개인정보 처리방침",
-  description: `${site.name} 개인정보 처리방침`,
+  description: `${site.name} 개인정보 처리방침 — 쿠키·광고·댓글 서비스의 개인정보 처리 기준을 안내합니다.`,
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

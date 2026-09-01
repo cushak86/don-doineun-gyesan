@@ -8,7 +8,8 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "투자 블로그 — ETF·FIRE·배당·복리 가이드",
   description:
-    "ETF·미국주식, FIRE·은퇴설계, 배당·커버드콜, 재테크 기초까지 데이터 기반 투자 가이드를 무료로 읽어보세요.",
+    "ETF·미국주식, FIRE·은퇴설계, 배당·커버드콜, 재테크 기초까지 데이터 기반 투자 가이드를 무료로 읽어보세요. 모든 글은 관련 계산기와 연결되어 있습니다.",
+  alternates: { canonical: "/blog" },
 };
 
 const FAQ = [
@@ -32,9 +33,22 @@ const FAQ = [
 
 export default function BlogPage() {
   const posts = getAllPosts();
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 
   return (
     <div className="container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <section className="hero">
         <span className="eyebrow">한국 투자자를 위한 데이터 기반 가이드</span>
         <h1>투자 블로그</h1>

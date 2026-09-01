@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+  alternates: {
+    types: { "application/rss+xml": `${site.url}/rss.xml` },
+  },
   verification: {
     google: "ZjcG7KEWeN-nmCldcgeZe9lJZCaozm5FXZMEgHv7kpU",
     other: {
@@ -27,9 +33,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${site.url}/#organization`,
+                  name: site.name,
+                  url: site.url,
+                  logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 512, height: 512 },
+                  description: "한국 투자자를 위한 무료 재테크 계산기와 데이터 기반 투자 가이드",
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${site.url}/#website`,
+                  url: site.url,
+                  name: site.name,
+                  inLanguage: "ko",
+                  publisher: { "@id": `${site.url}/#organization` },
+                },
+              ],
+            }),
+          }}
         />
         {site.adsense.clientId && (
           <script

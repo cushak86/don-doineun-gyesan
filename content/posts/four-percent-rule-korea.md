@@ -57,3 +57,11 @@ calculator: "fire"
 3. 국민연금·유연한 인출을 반영하면 현실적인 목표는 생각보다 가까워집니다.
 
 내 월 지출과 저축 속도를 넣으면 경제적 자유까지 남은 기간이 나옵니다. FIRE 계산기에서 직접 확인해보세요.
+
+---
+
+**참고 자료**
+
+- [Trinity Study (위키백과)](https://en.wikipedia.org/wiki/Trinity_study) — 4% 룰의 원 연구와 성공률 데이터
+- [국민연금연구원](https://institute.nps.or.kr) — 국민노후보장패널조사(적정 노후 생활비)
+- [통계청](https://kostat.go.kr) — 소비자물가지수·가계동향조사

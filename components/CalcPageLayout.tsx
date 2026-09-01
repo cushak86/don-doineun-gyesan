@@ -1,10 +1,13 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
+import { marked } from "marked";
 import AdSlot from "@/components/AdSlot";
 import PostCard from "@/components/PostCard";
 import { CALCULATORS } from "@/lib/clusters";
 import { getAllPosts } from "@/lib/posts";
 
-/** 계산기 페이지 공통 틀: 제목 + 계산기 + 관련 글 + 다른 계산기 */
+/** 계산기 페이지 공통 틀: 제목 + 계산기 + 설명 콘텐츠 + 관련 글 + 다른 계산기 */
 export default function CalcPageLayout({
   slug,
   children,
@@ -14,11 +17,21 @@ export default function CalcPageLayout({
 }) {
   const calc = CALCULATORS.find((c) => c.slug === slug)!;
   const related = getAllPosts().filter((p) => p.calculator === slug).slice(0, 4);
-  const rest = CALCULATORS.filter((c) => c.slug !== slug);
+
+  // 같은 카테고리 내에서 자기 다음 순서부터 순환해 링크가 특정 계산기에 몰리지 않게 분산
+  const sameCat = CALCULATORS.filter((c) => c.category === calc.category);
+  const selfIdx = sameCat.findIndex((c) => c.slug === slug);
+  const rotated = sameCat.slice(selfIdx + 1).concat(sameCat.slice(0, selfIdx));
   const others = [
-    ...rest.filter((c) => c.category === calc.category),
-    ...rest.filter((c) => c.category !== calc.category && c.featured),
+    ...rotated,
+    ...CALCULATORS.filter((c) => c.category !== calc.category && c.featured),
   ].slice(0, 4);
+
+  // content/calculators/{slug}.md 가 있으면 계산기 아래에 설명 콘텐츠로 렌더링
+  const contentFile = path.join(process.cwd(), "content", "calculators", `${slug}.md`);
+  const contentHtml = fs.existsSync(contentFile)
+    ? (marked.parse(fs.readFileSync(contentFile, "utf-8")) as string)
+    : null;
 
   return (
     <div className="container">
@@ -31,6 +44,14 @@ export default function CalcPageLayout({
       </section>
 
       <div style={{ maxWidth: 640 }}>{children}</div>
+
+      {contentHtml && (
+        <article
+          className="post-body"
+          style={{ margin: "48px 0 0", maxWidth: 720 }}
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
+        />
+      )}
 
       <AdSlot />
 

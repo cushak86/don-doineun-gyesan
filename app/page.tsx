@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
 import PostCard from "@/components/PostCard";
 import { CALCULATORS, CLUSTERS, CLUSTER_KEYS } from "@/lib/clusters";
 import { getAllPosts } from "@/lib/posts";
 import { site } from "@/site.config";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   const posts = getAllPosts();

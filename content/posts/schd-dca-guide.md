@@ -59,3 +59,11 @@ YOC(Yield on Cost)는 **내 매수 단가 대비 배당수익률**입니다. 지
 3. 단기 주가에 일희일비하지 않고 주식 수를 늘리는 데 집중하는 투자자에게 맞는 ETF입니다.
 
 복리 계산기에 내 적립금을 넣고 10년, 20년 후 자산 곡선을 직접 확인해보세요.
+
+---
+
+**참고 자료**
+
+- [Schwab SCHD 공식 페이지](https://www.schwabassetmanagement.com/products/schd) — 배당률·구성 종목·총보수
+- [Dow Jones U.S. Dividend 100 지수 방법론](https://www.spglobal.com/spdji/en/indices/dividends-factors/dow-jones-us-dividend-100-index/) — 편입 기준
+- [국세청](https://www.nts.go.kr) — 배당소득세·금융소득종합과세 기준
