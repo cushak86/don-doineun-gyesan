@@ -4,7 +4,7 @@ export const site = {
   tagline: "계산기로 확인하고, 데이터로 투자하는 재테크 가이드",
   description:
     "복리·FIRE·배당 계산기와 ETF·은퇴설계·배당·재테크 기초 4개 클러스터의 데이터 기반 투자 가이드를 무료로 제공합니다.",
-  url: "https://don-doineun-gyesan.vercel.app", // 배포 후 실제 주소로 변경
+  url: "https://don-doineun-gyesan-cushaks.vercel.app", // 도메인 연결 시 변경
   author: "돈되는계산",
 
   // 애드센스 승인 후 ca-pub-XXXXXXXX 형식의 클라이언트 ID를 입력하면 광고가 노출됩니다.
