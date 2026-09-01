@@ -7,9 +7,9 @@ export const site = {
   url: "https://dongyesan.com",
   author: "돈되는계산",
 
-  // 애드센스 승인 후 ca-pub-XXXXXXXX 형식의 클라이언트 ID를 입력하면 광고가 노출됩니다.
+  // 애드센스 클라이언트 ID. 승인 후 AdSlot에 slot ID를 넣으면 실제 광고가 노출됩니다.
   adsense: {
-    clientId: "",
+    clientId: "ca-pub-2614971319845150",
   },
 
   // 쿠팡 파트너스 위젯 ID·트래킹 코드를 입력하면 쿠팡 배너가 노출됩니다.
