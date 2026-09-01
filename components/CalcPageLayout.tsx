@@ -14,7 +14,11 @@ export default function CalcPageLayout({
 }) {
   const calc = CALCULATORS.find((c) => c.slug === slug)!;
   const related = getAllPosts().filter((p) => p.calculator === slug).slice(0, 4);
-  const others = CALCULATORS.filter((c) => c.slug !== slug);
+  const rest = CALCULATORS.filter((c) => c.slug !== slug);
+  const others = [
+    ...rest.filter((c) => c.category === calc.category),
+    ...rest.filter((c) => c.category !== calc.category && c.featured),
+  ].slice(0, 4);
 
   return (
     <div className="container">

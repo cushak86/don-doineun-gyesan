@@ -522,6 +522,86 @@ a.card:hover {
   color: var(--text-muted);
 }
 
+/* 리밸런싱 자산 행 */
+.rb-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.rb-row input {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 0;
+}
+
+.rb-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.rb-name {
+  flex: 1.2;
+}
+
+.rb-num {
+  flex: 1;
+  text-align: right;
+}
+
+.rb-pct {
+  flex: 0.6;
+}
+
+.rb-del {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.rb-del:hover {
+  color: #b91c1c;
+}
+
+.rb-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 4px 0 14px;
+}
+
+.rb-add {
+  border: 1px dashed var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.rb-add:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 /* ---------- 블로그 검색 ---------- */
 .search-bar {
   display: flex;

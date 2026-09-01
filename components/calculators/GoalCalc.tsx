@@ -4,7 +4,7 @@ import { useState } from "react";
 import { fmtMan, monthsToGoal, requiredMonthly } from "@/lib/finance";
 import NumberField, { GOAL_QUICK, MONEY_QUICK, num } from "./NumberField";
 
-type Mode = "period" | "monthly";
+type Mode = "period" | "monthly" | "seed";
 
 export default function GoalCalc() {
   const [mode, setMode] = useState<Mode>("period");
@@ -56,6 +56,29 @@ export default function GoalCalc() {
           </div>
         </div>
       );
+    } else if (mode === "seed") {
+      const y = num(years);
+      if (y <= 0) return;
+      const i = num(rate) / 100 / 12;
+      const seed = g / Math.pow(1 + i, y * 12);
+      setResult(
+        <div className="calc-result">
+          <div className="headline">
+            연 {num(rate)}%로 {y}년 굴려 {fmtMan(g)}을 만들려면, 지금 필요한 종잣돈은
+          </div>
+          <div className="big">{fmtMan(Math.ceil(seed))}</div>
+          <div className="rows">
+            <div>
+              <span className="k">복리 수익 부분</span>
+              <span className="v">+{fmtMan(g - Math.ceil(seed))}</span>
+            </div>
+            <div>
+              <span className="k">원금 대비</span>
+              <span className="v">{(g / seed).toFixed(2)}배</span>
+            </div>
+          </div>
+        </div>
+      );
     } else {
       const y = num(years);
       if (y <= 0) return;
@@ -90,6 +113,9 @@ export default function GoalCalc() {
         <button className={mode === "monthly" ? "active" : ""} onClick={() => { setMode("monthly"); setResult(null); }}>
           💰 필요 월 적립금 계산
         </button>
+        <button className={mode === "seed" ? "active" : ""} onClick={() => { setMode("seed"); setResult(null); }}>
+          🌰 필요 종잣돈 계산
+        </button>
       </div>
 
       <NumberField
@@ -100,13 +126,15 @@ export default function GoalCalc() {
         quick={GOAL_QUICK}
         hint="예: 1억 = 10000"
       />
-      <NumberField
-        label="현재 자산"
-        value={principal}
-        onChange={setPrincipal}
-        unit="만 원"
-        quick={MONEY_QUICK}
-      />
+      {mode !== "seed" && (
+        <NumberField
+          label="현재 자산"
+          value={principal}
+          onChange={setPrincipal}
+          unit="만 원"
+          quick={MONEY_QUICK}
+        />
+      )}
       {mode === "period" ? (
         <NumberField label="월 적립금" value={monthly} onChange={setMonthly} unit="만 원" />
       ) : (

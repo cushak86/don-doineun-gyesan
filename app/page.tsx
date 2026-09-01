@@ -8,6 +8,7 @@ import { site } from "@/site.config";
 export default function HomePage() {
   const posts = getAllPosts();
   const recent = posts.slice(0, 6);
+  const featured = CALCULATORS.filter((c) => c.featured);
 
   return (
     <div className="container">
@@ -19,8 +20,9 @@ export default function HomePage() {
           데이터로 투자하세요
         </h1>
         <p className="lead">
-          {site.name}은 복리·목표금액·FIRE·배당 계산기와 {posts.length}편의 데이터 기반 투자
-          가이드를 무료로 제공합니다. 감이 아니라 숫자로 자산 계획을 세워보세요.
+          {site.name}은 복리·FIRE·배당부터 연봉·대출·적금까지 {CALCULATORS.length}종의 계산기와{" "}
+          {posts.length}편의 데이터 기반 투자 가이드를 무료로 제공합니다. 감이 아니라 숫자로 자산
+          계획을 세워보세요.
         </p>
         <div className="stat-row">
           <div className="stat">
@@ -46,11 +48,11 @@ export default function HomePage() {
         <div className="section-head">
           <h2>투자 계산기</h2>
           <Link className="more" href="/calculators">
-            전체 보기 →
+            전체 {CALCULATORS.length}종 보기 →
           </Link>
         </div>
         <div className="grid cols-4">
-          {CALCULATORS.map((c) => (
+          {featured.map((c) => (
             <Link key={c.slug} href={`/calculators/${c.slug}`} className="card">
               <span className="emoji">{c.emoji}</span>
               <h3>{c.title}</h3>

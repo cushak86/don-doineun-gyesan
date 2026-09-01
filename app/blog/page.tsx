@@ -63,9 +63,12 @@ export default function BlogPage() {
       <section className="section">
         <div className="section-head">
           <h2>글을 읽었다면, 직접 계산해보세요</h2>
+          <Link className="more" href="/calculators">
+            전체 {CALCULATORS.length}종 보기 →
+          </Link>
         </div>
         <div className="grid cols-4">
-          {CALCULATORS.map((c) => (
+          {CALCULATORS.filter((c) => c.featured).map((c) => (
             <Link key={c.slug} href={`/calculators/${c.slug}`} className="card">
               <span className="emoji">{c.emoji}</span>
               <h3>{c.title}</h3>
