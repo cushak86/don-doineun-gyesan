@@ -62,6 +62,14 @@ ISA의 비과세 한도는 "계좌당" 주어집니다. 그래서 만기가 오�
 
 일반적인 우선순위는 **연금저축(공제 한도) → ISA → 일반계좌**이지만, 중기 목돈(주택·결혼 자금)이 목표라면 ISA가 먼저입니다. 유동성 계획이 세금보다 우선입니다.
 
+## 📺 영상으로 보기
+
+은행원이 왜 ISA부터 만들라고 하는지, 실제 시뮬레이션을 돌려본 영상입니다.
+
+<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/67_fEtAdo74" title="은행원이 ISA부터 만들라는 이유, 시뮬레이션 돌려봤습니다" loading="lazy" allowfullscreen></iframe></div>
+
+더 많은 시뮬레이션 영상은 유튜브 [머니시뮬](https://www.youtube.com/@머니시뮬) 채널에서 볼 수 있습니다.
+
 ## 정리
 
 1. ISA는 손익통산 + 비과세 + 9.9% 분리과세로, 국내 상장 해외 ETF와 궁합이 가장 좋은 계좌입니다.

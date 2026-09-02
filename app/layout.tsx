@@ -51,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   url: site.url,
                   logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 512, height: 512 },
                   description: "한국 투자자를 위한 무료 재테크 계산기와 데이터 기반 투자 가이드",
+                  sameAs: [site.youtube],
                 },
                 {
                   "@type": "WebSite",
@@ -93,6 +94,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/privacy">개인정보 처리방침</Link>
               <Link href="/blog">블로그</Link>
               <Link href="/calculators">계산기</Link>
+              <a href={site.youtube} target="_blank" rel="noopener noreferrer">
+                📺 유튜브 머니시뮬
+              </a>
             </div>
             <div>© 2026 {site.name}. All rights reserved.</div>
             <p className="disclaimer">

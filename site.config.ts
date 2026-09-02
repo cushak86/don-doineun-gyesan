@@ -7,6 +7,9 @@ export const site = {
   url: "https://dongyesan.com",
   author: "돈되는계산",
 
+  // 운영 중인 유튜브 채널
+  youtube: "https://www.youtube.com/@머니시뮬",
+
   // 애드센스 클라이언트 ID. 승인 후 AdSlot에 slot ID를 넣으면 실제 광고가 노출됩니다.
   adsense: {
     clientId: "ca-pub-2614971319845150",
