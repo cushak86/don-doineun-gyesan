@@ -1,4 +1,4 @@
-// 사이트 전역 설정 — 이름·주소·광고·댓글 설정을 여기 한 곳에서 관리합니다.
+// 사이트 전역 설정 — 이름·주소·광고·문의·댓글 설정을 여기 한 곳에서 관리합니다.
 export const site = {
   name: "돈되는계산",
   tagline: "계산기로 확인하고, 데이터로 투자하는 재테크 가이드",
@@ -9,6 +9,12 @@ export const site = {
 
   // 운영 중인 유튜브 채널
   youtube: "https://www.youtube.com/@머니시뮬",
+
+  // 문의 채널. email 을 채우면 문의 페이지와 개인정보처리방침에 이메일이 함께 노출됩니다.
+  contact: {
+    email: "",
+    github: "https://github.com/cushak86/don-doineun-gyesan/issues",
+  },
 
   // 애드센스 클라이언트 ID. 승인 후 AdSlot에 slot ID를 넣으면 실제 광고가 노출됩니다.
   adsense: {

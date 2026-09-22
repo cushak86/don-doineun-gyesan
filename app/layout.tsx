@@ -92,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="links">
               <Link href="/about">소개</Link>
               <Link href="/privacy">개인정보 처리방침</Link>
+              <Link href="/contact">문의</Link>
               <Link href="/blog">블로그</Link>
               <Link href="/calculators">계산기</Link>
               <a href={site.youtube} target="_blank" rel="noopener noreferrer">
