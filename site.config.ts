@@ -12,7 +12,7 @@ export const site = {
 
   // 문의 채널. email 을 채우면 문의 페이지와 개인정보처리방침에 이메일이 함께 노출됩니다.
   contact: {
-    email: "",
+    email: "cushak@icloud.com",
     github: "https://github.com/cushak86/don-doineun-gyesan/issues",
   },
 

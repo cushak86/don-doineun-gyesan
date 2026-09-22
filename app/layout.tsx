@@ -52,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 512, height: 512 },
                   description: "한국 투자자를 위한 무료 재테크 계산기와 데이터 기반 투자 가이드",
                   sameAs: [site.youtube],
+                  email: site.contact.email || undefined,
                 },
                 {
                   "@type": "WebSite",
